@@ -1,0 +1,19 @@
+{
+  "name": "bangaloreparks",
+  "version": "1.0.0",
+  "description": "Brief discription on beautiful the parks are in bangalore",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nithin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "neo4j-driver": "^1.7.3",
+    "mongoose": "^5.4.2"
+  }
+}
