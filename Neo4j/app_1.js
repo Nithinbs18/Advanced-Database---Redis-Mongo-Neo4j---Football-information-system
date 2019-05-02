@@ -47,10 +47,60 @@ run4 : async () => {
           console.log(val._fields[0].properties.name+" manages "+val._fields[1].properties.name);
           ;});})
       .catch(function(err){console.log(err);});
+},
+
+run5 : async () => {
+  const choice = await inquirer.playingInMatch();
+  console.log(choice.mname);
+  session
+  .run("MATCH (m)<-[h:home]-(c:Club) where m.name=$name RETURN c",{name: choice.mname})
+  .then(function(resp){
+    resp.records.forEach(function(val){ 
+      val.forEach(function(n){console.log("------------------------------");console.log(n.properties.name);console.log("------------------------------");});
+      ;});})
+      .catch(function(err){console.log(err);});
+
+      session
+      .run("MATCH (p)-[r:STARTING]->(m)<-[h:home]-(c:Club)<-[z:PLAYS_FOR]-(p) where m.name=$name RETURN p",{name: choice.mname})
+      .then(function(resp){
+        resp.records.forEach(function(val){ 
+          val.forEach(function(n){console.log(n.properties.name)});
+          ;});})
+          .catch(function(err){console.log(err);});
+          
+          session
+          .run("MATCH (p)-[r:SUB]->(m)<-[h:home]-(c:Club)<-[z:PLAYS_FOR]-(p) where m.name=$name RETURN p",{name: choice.mname})
+          .then(function(resp){console.log("****Subs*****");
+            resp.records.forEach(function(val){
+              val.forEach(function(n){console.log(n.properties.name)});
+              ;});})
+              .catch(function(err){console.log(err);});
+
+       session
+          .run("MATCH (m)<-[h:away]-(c:Club) where m.name=$name RETURN c",{name: choice.mname})
+          .then(function(resp){
+            resp.records.forEach(function(val){ 
+              val.forEach(function(n){console.log("------------------------------");console.log(n.properties.name);console.log("------------------------------");});
+              ;});})
+              .catch(function(err){console.log(err);});
+
+          session
+          .run("MATCH (p)-[r:STARTING]->(m)<-[h:away]-(c:Club)<-[z:PLAYS_FOR]-(p) where m.name=$name RETURN p",{name: choice.mname})
+          .then(function(resp){
+            resp.records.forEach(function(val){ 
+              val.forEach(function(n){console.log(n.properties.name)});
+              ;});})  
+      .catch(function(err){console.log(err);});
+      
+      session
+          .run("MATCH (p)-[r:SUB]->(m)<-[h:away]-(c:Club)<-[z:PLAYS_FOR]-(p) where m.name=$name RETURN p",{name: choice.mname})
+          .then(function(resp){console.log("****Subs*****");
+            resp.records.forEach(function(val){
+              val.forEach(function(n){console.log(n.properties.name)});
+              ;});})
+              .catch(function(err){console.log(err);});
 }
 
-
 }
 
-// run();
 

@@ -68,7 +68,18 @@ module.exports = {
       }
     ];
     return inquirer.prompt(questions);
-  }
+  },
 
+  playingInMatch: () => {
+    const questions = [
+      {
+        name: 'mname',
+        type: 'list',
+        message: 'Enter the name name of the match',
+        choices: ['Chelsea_vs_Manchester_United','Chelsea_vs_Liverpool','Manchester_United_vs_Chelsea','Manchester_United_vs_Liverpool','Liverpool_vs_Chelsea','Liverpool_vs_Manchester_United']
+      }
+    ];
+    return inquirer.prompt(questions);
+  }
 
 }
