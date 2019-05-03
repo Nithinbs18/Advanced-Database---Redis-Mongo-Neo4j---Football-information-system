@@ -1,0 +1,27 @@
+{
+  "name": "football_information_system_redis",
+  "version": "0.0.1",
+  "description": "football_information_system_redis",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nithinbs18/Advanced-Database---Redis-Mongo-Neo4j---Football-information-system.git"
+  },
+  "author": "Gaston Vejar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nithinbs18/Advanced-Database---Redis-Mongo-Neo4j---Football-information-system.git/issues"
+  },
+  "homepage": "https://github.com/Nithinbs18/Advanced-Database---Redis-Mongo-Neo4j---Football-information-system.git#readme",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
