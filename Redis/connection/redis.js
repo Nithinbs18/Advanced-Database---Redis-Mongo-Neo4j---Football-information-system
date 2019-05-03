@@ -46,4 +46,15 @@ function getPlayerInfo(playerId, callback){
     })
 }
 
-module.exports = {getMatch, getTeamPlayers, getPlayerInfo};
+function getTeamInfo(teamId, callback){
+    client.get('team:' + teamId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo};
