@@ -57,4 +57,53 @@ function getTeamInfo(teamId, callback){
         }
     })
 }
-module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo};
+
+function getComment(commentId, callback){
+    client.get('comment:' + commentId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+function getMatchComments(matchId, callback){
+    client.smembers('comments_mat' + matchId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+function getEvent(eventId, callback){
+    client.get('event:' + eventId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+function getMatchEvents(matchId, callback){
+    client.smembers('events_mat' + matchId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo, getComment,getEvent,getMatchComments,getMatchEvents};
