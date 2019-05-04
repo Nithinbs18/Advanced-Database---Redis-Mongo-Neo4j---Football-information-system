@@ -1,8 +1,8 @@
 var redis = require('redis');
-var client = redis.createClient(6379, "192.168.0.38");
+var client = redis.createClient(6379, "127.0.0.1");
 
 client.on('connect', function() {
-    console.log('Redis client connected');
+    //console.log('Redis client connected');
 });
 
 
@@ -106,4 +106,16 @@ function getMatchEvents(matchId, callback){
     })
 }
 
-module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo, getComment,getEvent,getMatchComments,getMatchEvents};
+function getPlayerEvents(playerId, callback){
+    client.smembers('events_pl' + playerId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo, getComment,getEvent,getMatchComments,getMatchEvents,getPlayerEvents};
