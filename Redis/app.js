@@ -47,7 +47,8 @@ function menu(option){
         console.log("2. See match comments")
         console.log("3. See home team players")
         console.log("4. See away team players")
-        console.log("5. Go back to main menu")
+        console.log("5. See match stats")
+        console.log("6. Go back to main menu")
         
         var prompt_attributes = [
             {
@@ -78,13 +79,22 @@ function menu(option){
                     operations.getTeamPlayers(3,function(players){
                         console.log(players)
                     })
+                    menu(3);
+                    return;
                 }
                 if(selection == 4){
                     operations.getTeamPlayers(2,function(players){
                         console.log(players)
                     })
+                    menu(3);
+                    return;
                 }
                 if(selection == 5){
+                    operations.getMatchStats(4,3,2,function(stats){
+                        console.log(stats);
+                    })
+                }
+                if(selection == 6){
                     menu(1);
                     return; 
                 }
