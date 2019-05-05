@@ -1,0 +1,107 @@
+Update queries for club collection
+====================================
+Updating the data present in league table:
+-----------------------------------------
+
+
+Adding  details to League_table
+-------------------------------------------
+db.test_club.update({club_id:"cl1"}, {$push: { "league_table": {$each : [{league_id:"l3",played:4,won:2,lost:0,draw:2,points:32},{league_id:"l4",played:5,won:6,lost:1,draw:1,points:39}]}}},{upsert:true,multi:false})
+
+
+
+
+
+
+Update queries for players collection
+=====================================
+
+Adding match event details for one new player (without any prior events)-
+------------------------------------------------
+db.test_players.update({player_id:"PL1"}, {$set: {"event_details": [
+{   "match_id":"mat1",
+	"minutes_played" : 1,
+	"goals" : 1,
+	"assists" : 1,
+	"fouls" : 1,
+	"penalties_conceded" : 1,
+	"penalties_taken" : 1,
+	"cards_yellow" : 1,
+	"cards_red" : 1,
+	"total_shots":2,
+	"shots_on_target" : 1,
+	"total_passes": 1,
+	"passes_completed":1
+	}]}}, {multi: true,upsert:true})
+================================================================
+Adding event details for a specific match for a specific player
+------------------------------------------------------
+db.test_players.update({player_id:"PL1"}, {$addToSet: {"event_details":
+{  "match_id":"mat1",
+	"minutes_played" : 1,
+	"goals" : 1,
+	"assists" : 1,
+	"fouls" : 1,
+	"penalties_conceded" : 1,
+	"penalties_taken" : 1,
+	"cards_yellow" : 1,
+	"cards_red" : 1,
+	"total_shots":2,
+	"shots_on_target" : 1,
+	"total_passes": 1,
+	"passes_completed":1}}}, {multi: true,upsert:true})
+
+====================================================================
+Adding playing_position to a specific player
+-----------------------------------------------
+db.test_players.update({player_id:"PL1"}, {$addToSet: {"playing_position": "Left-Winger"}},{multi: true,upsert:true})
+
+---multiple playing positions addition-
+db.test_players.update({player_id:"PL2"}, {$push: { "playing_position": {$each : ["Left-Winger","Right-Winger","Attacker" ]} }},{multi: true,upsert:true})
+====================================================================
+
+
+
+
+Update queries for matches collection
+======================================
+ Adding comment details to a specific match after it is over
+------------------------------------------------------------
+
+db.matches.update({match_id:"mat4"}, {$push: { "comments": {$each : 
+[{"commentID":"c1","user":"us5","team":"c13","commentType":"main","content":"Go Red Devils!","timeStamp":"2019-04-30T13:08:29.234Z"},
+{"commentID":"c2","user":"us4","team":"c13","commentType":"reply","replyTo":"c001","content":"Man U FTW!","timeStamp":"2019-04-30T13:10:29.234Z"}
+]}}},{upsert:true,multi:false})
+-----------------------------------------------------------------
+
+Adding home and away team event details to a match
+-----------------------------------------------------------------
+db.matches.update(
+   {match_id : "mat4" },
+   { $set :{ home:  
+   { id: 'cl2',
+    goals: 1,
+    assists: 0,
+    fouls: 0,
+    cards_yellow: 2,
+    cards_red: 1,
+    corner: 0,
+    total_shots: 0,
+    shots_on_target: 0,
+    total_passes: 2,
+    passes_completed: 1 }} }
+)
+db.matches.update(
+   {match_id : "mat4" },
+   { $set :{ away:  { id: 'cl2',
+    goals: 1,
+    assists: 0,
+    fouls: 0,
+    cards_yellow: 2,
+    cards_red: 1,
+    corner: 0,
+    total_shots: 0,
+    shots_on_target: 0,
+    total_passes: 2,
+    passes_completed: 1 }} }
+)

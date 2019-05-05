@@ -1,0 +1,852 @@
+db.createCollection("users")
+ -------------------------------------------------
+ db.users.insertMany(
+[
+{"userID":"us1",
+ "name": "binita",
+ "phone":1765645297,
+ "email": "nayakbinita@gmail.com"},
+{"userID":"us2",
+ "name": "nithin",
+ "phone":1765645297,
+ "email": "nithinbs18@gmail.com"},
+{"userID":"us3",
+ "name": "gautam",
+ "phone":1765645297,
+ "email": "gautamr@gmail.com"},
+{"userID":"us4",
+ "name": "akshay",
+ "phone":1765645297,
+ "email": "akshay@gmail.com"},
+{"userID":"us5",
+ "name": "gaston",
+ "phone":1765645297,
+ "email": "gaston@gmail.com"}]
+);
+========================================================================
+========================================================================
+db.createCollection("managers")
+------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+db.managers.insertMany([
+{
+"name":"Maurizio Sarri",
+"id":"m1",
+"status":"active",
+"joined_club":"14 July 2018",
+"age":"60 years 95 days",
+"dob":"10/01/1959",
+"premier_league_seasons":1,
+"premier_league_debut_match":"Huddersfield Town,11 August 2018,Won 3 – 0",
+"awards": 
+    {
+    "title": "NA",
+	"awarded_in": ["NA"]
+    }
+},
+{
+"name":"Jurgen Klopp",
+"id":"m2",
+"status":"active",
+"joined_club":"8 October 2015",
+"age":"51 years 303 days",
+"dob":"16/06/1967",
+"premier_league_seasons":4,
+"premier_league_debut_match":"Tottenham Hotspur (a),17 October 2015,Drawn 0 – 0",
+"awards": 
+    {
+    "title": "Manager of the Month",
+	"awarded_in": ["January 2012","August 2013","March 2014"]
+    }
+},
+{
+"name":"Ole Gunnar Solskjaer",
+"id":"m3",
+"status":"active",
+"joined_club":"19 December 2018",
+"age":"46 years 62 days",
+"dob":"26/02/1973",
+"premier_league_seasons":2,
+"premier_league_debut_match":"West Ham United (h),11 January 2014,Lost 0 - 2",
+"awards": 
+    {
+    "title": "Manager of the Month",
+	"awarded_in": ["January 2019"]
+    }
+}
+])
+========================================================================
+db.createCollection("clubs")
+------------------------------------------------------------------------
+===============================================================================
+db.clubs.insertMany([
+{
+"club_id":"cl1",
+"name":"Chelsea",
+"founded":"1905",
+"city":"London",
+"country":"United Kingdom",
+"stadium":"Staford Bridge",
+"telephone":"0207 958 2190",
+"email":"enquiries@chelseafc.com",
+"address":"Fulham Road,London",
+"store":"https://www.chelseamegastore.com/stores/chelsea/de",
+"league_table":[]},
+
+{"club_id":"cl2",
+"name":"Liverpool",
+"founded":"1892",
+"city":"Liverpool",
+"country":"United Kingdom",
+"stadium":"Anfield",
+"telephone":"0151 264 2500",
+"email":"customerservices@liverpoolfc.tv",
+"address":"Anfield Road, Liverpool",
+"store":"https://store.liverpoolfc.com/",
+"league_table":[]},
+
+{"club_id":"cl3",
+"name":"Manchester United",
+"founded":"1878",
+"city":"Manchester",
+"country":"United Kingdom",
+"stadium":"Old Trafford",
+"telephone":"0161 868 8000",
+"email":"enquiries@manutd.co.uk",
+"address":"Sir Matt Busby Way, Manchester",
+"store":"https://store.manutd.com/stores/manutd/de",
+"league_table":[]}
+])
+==================================================================================
+db.createCollection("meetups")
+----------------------------------------------
+db.meetups.insertMany([
+{
+"meetup_id" : "mt1",
+"description" : "This is a meet up for the Liverpool club fans. We are going to meet all the fans of our club at this amazing place. we can grab a beer or two and get to know each other. we can also plan upcoming meet-ups as all the fans would be present and take their suggestions too.",
+"type": "Fans Meet Up",
+"venue" : "Murphy's Law",
+"date" : ISODate("2018-10-10T18:00:00.000Z"),
+"city" : "Mannheim"
+},
+{
+ "meetup_id" : "mt2",
+"description" : "This is a meet up for the Chelsea club fans. We will be going to the Stamford Bridge to meet our players. We can see them training on the field and also check the Stamford Bridge which would be really exciting. We can even click some pictures and if we get an opportunity, we can click pictures and get the autograph from the players too.",
+"type": "Players Training Camp",
+"venue" : "Stamford Bridge",
+"date" : ISODate("2018-12-19T18:00:00.000Z"),
+"city" : "London"  
+},
+{
+ "meetup_id" : "mt3",
+"description" : "This is a meet up for the Manchester United club fans. We will be meeting at this pub, which is the most popular place at Heidleberg. We gonna have an exciting evening watching the match while drinking the beer together. Lets cheer for the team GGMU.",
+"venue" : "The Dubliner",
+"type": "Match Screening",
+"date" : ISODate("2018-05-13T18:00:00.000Z"),
+"city" : "Heidelberg"  
+}])
+
+===================================================================================
+db.createCollection("players")
+-----------------------------------------------------------------------------------
+db.players.insertMany
+([{
+	"player_id" : "PL1",
+    "name" : "Rafael Camacho",
+	"club" : "Liverpool",
+	"age" : 18,
+	"playing_position" : ["Mid-Fielder"],
+	"event_details":[],"transfers":[]	
+},
+{
+	"player_id" : "PL2",
+	"name" : "Nathaniel Clyne",
+	"club" : "Liverpool",
+	"age" : 27,
+	"playing_position" : ["Defender","Right-Back"],
+	"event_details":[],"transfers":[]
+	
+},
+{
+"player_id" : "PL3",
+"name" : "Alberto Moreno",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Defender"],
+"event_details":[],"transfers":[]
+
+},
+{"player_id" : "PL4",
+"name" : "Daniel Sturridge",
+"club" : "Liverpool",
+"age" : 28,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+  "player_id" :"PL5",
+"name" : "Divock Origi",
+"club" : "Liverpool",
+"age" : 23,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+    "player_id" :"PL6",
+"name" : "Adam Lallana",
+"club" : "Liverpool",
+"age" : 30,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+    "player_id" : "PL7",
+"name" : "Dejan Lovren",
+"club" : "Liverpool",
+"age" : 29,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL8",
+"name" : "Xherdan Shaqiri",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Attacker"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" :"PL9",
+"name" : "Joe Gomez",
+"club" : "Liverpool",
+"age" : 21,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL10",
+"name" : "Naby Keïta",
+"club" : "Liverpool",
+"age" : 23,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL11",
+"name" : "Joël Matip",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL12",
+"name" : "Jordan Henderson",
+"club" : "Liverpool",
+"age" : 28,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL13",
+"name" : "James Milner",
+"club" : "Liverpool",
+"age" : 32,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL14",
+"name" : "Fabinho",
+"club" : "Liverpool",
+"age" : 24,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL15",
+"name" : "Trent Alexander-Arnold",
+"club" : "Liverpool",
+"age" : 19,
+"playing_position" : ["Mid-Fielder","Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL16",
+"name" : "Georginio Wijnaldum",
+"club" : "Liverpool",
+"age" : 27,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL17",
+"name" : "Roberto Firmino",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Forward","Attacker"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL18",
+"name" : "Sadio Mané",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Attacker"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL19",
+"name" : "Andrew Robertson",
+"club" : "Liverpool",
+"age" : 24,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL20",
+"name" : "Mohamed Salah",
+"club" : "Liverpool",
+"age" : 26,
+"playing_position" : ["Mid-Fielder","Attacker"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL21",
+"name" : "Virgil van Dijk",
+"club" : "Liverpool",
+"age" : 27,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL22",
+"name" : "Alisson",
+"club" : "Liverpool",
+"age" : 25,
+"playing_position" : ["Goal-Keeper"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL23",
+"name" : "Gary Cahill",
+"club" : "Chelsea",
+"age" : 32,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL24",
+"name" : "Victor Moses",
+"club" : "Chelsea",
+"age" : 27,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL25",
+"name" : "Davide Zappacosta",
+"club" : "Chelsea",
+"age" : 26,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL26",
+"name" : "Willy Caballero",
+"club" : "Chelsea",
+"age" : 36,
+"playing_position" : ["Goal-Keeper"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL27",
+"name" : "Cesc Fábregas",
+"club" : "Chelsea",
+"age" : 31,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL28",
+"name" : "Callum Hudson-Odoi",
+"club" : "Chelsea",
+"age" : 17,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL29",
+"name" : "Andreas Christensen",
+"club" : "Chelsea",
+"age" : 22,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL30",
+"name" : "Ruben Loftus-Cheek",
+"club" : "Chelsea",
+"age" : 22,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL31",
+"name" : "Emerson Palmieri",
+"club" : "Chelsea",
+"age" : 23,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL32",
+"name" : "Olivier Giroud",
+"club" : "Chelsea",
+"age" : 31,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL33",
+"name" : "Gonzalo Higuaín",
+"club" : "Chelsea",
+"age" : 30,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL34",
+"name" : "Álvaro Morata",
+"club" : "Chelsea",
+"age" : 25,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL35",
+"name" : "Ross Barkley",
+"club" : "Chelsea",
+"age" : 24,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL36",
+"name" : "Mateo Kovačić",
+"club" : "Chelsea",
+"age" : 24,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL37",
+"name" : "Pedro",
+"club" : "Chelsea",
+"age" : 31,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL38",
+"name" : "Willian",
+"club" : "Chelsea",
+"age" : 29,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL39",
+"name" : "Marcos Alonso",
+"club" : "Chelsea",
+"age" : 27,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL40",
+"name" : "Eden Hazard",
+"club" : "Chelsea",
+"age" : 27,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL41",
+"name" : "Antonio Rüdiger",
+"club" : "Chelsea",
+"age" : 25,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL42",
+"name" : "David Luiz",
+"club" : "Chelsea",
+"age" : 31,
+"playing_position" : ["Mid-Fielder","Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL43",
+"name" : "Jorginho",
+"club" : "Chelsea",
+"age" : 26,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL44",
+"name" : "N'Golo Kanté",
+"club" : "Chelsea",
+"age" : 27,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL45",
+"name" : "Kepa Arrizabalaga",
+"club" : "Chelsea",
+"age" : 23,
+"playing_position" : ["Goal-Keeper"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL46",
+"name" : "César Azpilicueta",
+"club" : "Chelsea",
+"age" : 28,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL47",
+"name" : "James Garner",
+"club" : "Manchester United",
+"age" : 17,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL48",
+"name" : "Tahith Chong",
+"club" : "Manchester United",
+"age" : 18,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL49",
+"name" : "Angel Gomes",
+"club" : "Manchester United",
+"age" : 17,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL50",
+"name" : "Mason Greenwood",
+"club" : "Manchester United",
+"age" : 16,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL51",
+"name" : "Marcos Rojo",
+"club" : "Manchester United",
+"age" : 28,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL52",
+"name" : "Matteo Darmian",
+"club" : "Manchester United",
+"age" : 28,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL53",
+"name" : "Andreas Pereira",
+"club" : "Manchester United",
+"age" : 22,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL54",
+"name" : "Antonio Valencia",
+"club" : "Manchester United",
+"age" : 32,
+"playing_position" : ["Defender","Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL55",
+"name" : "Marouane Fellaini",
+"club" : "Manchester United",
+"age" : 30,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL56",
+"name" : "Eric Bailly",
+"club" : "Manchester United",
+"age" : 24,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL57",
+"name" : "Scott McTominay",
+"club" : "Manchester United",
+"age" : 21,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL58",
+"name" : "Alexis Sánchez",
+"club" : "Manchester United",
+"age" : 29,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL59",
+"name" : "Diogo Dalot",
+"club" : "Manchester United",
+"age" : 19,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL60",
+"name" : "Fred",
+"club" : "Manchester United",
+"age" : 25,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL61",
+"name" : "Phil Jones",
+"club" : "Manchester United",
+"age" : 26,
+"playing_position" : ["Defender","Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL62",
+"name" : "Juan Mata",
+"club" : "Manchester United",
+"age" : 30,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL63",
+"name" : "Ander Herrera",
+"club" : "Manchester United",
+"age" : 28,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL64",
+"name" : "Anthony Martial",
+"club" : "Manchester United",
+"age" : 22,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+},
+{
+"player_id" : "PL65",
+"name" : "Jesse Lingard",
+"club" : "Manchester United",
+"age" : 25,
+"playing_position" : ["Mid-Fielder","Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL66",
+"name" : "Romelu Lukaku",
+"club" : "Manchester United",
+"age" : 25,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL67",
+"name" : "Chris Smalling",
+"club" : "Manchester United",
+"age" : 28,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL68",
+"name" : "Marcus Rashford",
+"club" : "Manchester United",
+"age" : 20,
+"playing_position" : ["Forward"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL69"
+"name" : "Ashley Young",
+"club" : "Manchester United",
+"age" : 33,
+"playing_position" : ["Mid-Fielder","Forward","Defender"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL70",
+"name" : "Nemanja Matić",
+"club" : "Manchester United",
+"age" : 29,
+"playing_position" : ["Mid-Fielder"],
+"event_details":[],"transfers":[]
+
+},
+{
+"player_id" : "PL71",
+"name" : "Victor Lindelöf",
+"club" : "Manchester United",
+"age" : 24,
+"playing_position" : ["Defender"],
+"event_details":[],"transfers":[]
+
+},
+{	"player_id" : "PL72",
+	"name" : "Luke Shaw",
+	"club" : "Manchester United",
+	"age" : 23,
+	"playing_position" : ["Mid-Fielder","Defender"],
+	"event_details":[],"transfers":[]
+
+},
+{	"player_id" : "PL73",
+	"name" : "Paul Pogba",
+	"club" : "Manchester United",
+	"age" : 25,
+	"playing_position" : ["Mid-Fielder"],
+	"event_details":[],"transfers":[]
+},
+{
+	"player_id" : "PL74",
+	"name" : "David de Gea",
+	"club" : "Manchester United",
+	"age" : 27,
+	"playing_position" : ["Goal-Keeper"],
+	"event_details":[],"transfers":[]
+}
+])
+================================================================================
+db.createCollection("matches")
+--------------------------------------------------------------------------------
+db.matches.insertMany
+([{
+	"match_id" : "mat6",
+	"name" : "Chelsea vs Manchester_United",
+	"timestamp" : ISODate("2018-10-20T18:00:00.000Z"),
+	"venue" : "Stamford Bridge",
+	
+	"comments" : [ ]
+},
+{
+	"match_id" : "mat2",
+	"name" : "Chelsea vs Manchester_United",
+	"timestamp" : ISODate("2018-10-18T18:00:00.000Z"),
+	"venue" : "Stamford Bridge",
+	
+	"comments" : [ ]
+},
+
+{
+	"match_id" : "mat5",
+	"name" : "Liverpool vs Chelsea",
+	"timestamp" : ISODate("2018-09-29T18:00:00.000Z"),
+	"venue" : "Anfield",
+
+	"comments" : [ ]
+},
+
+{
+	"match_id" : "mat4",
+	"name" : "Manchester_United vs Liverpool",
+	"timestamp" : ISODate("2019-02-19T18:00:00.000Z"),
+	"venue" : "Old Trafford",
+
+	"comments" : [ ]
+},{
+"match_id" : "mat1",
+	"name" : "Chelsea vs Liverpool",
+	"timestamp" : ISODate("2018-09-29T16:00:00.000Z"),
+	"venue" : "Stamford Bridge",
+	
+	"comments" : []
+},{
+	"match_id" : "mat3",
+	"name" : "Liverpool vs Manchester_United",
+	"timestamp" : ISODate("2018-12-16T17:00:00.000Z"),
+	"venue" : "Anfield",
+	
+	"comments" : [ ]
+}])
