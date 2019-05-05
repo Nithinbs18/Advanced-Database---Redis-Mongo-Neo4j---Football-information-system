@@ -217,4 +217,72 @@ function getPlayerEvents(playerId, callback){
     })
 }
 
-module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo, getComment,getEvent,getMatchComments,getMatchEvents,getPlayerEvents};
+function getTeamManager(managerId, callback){
+    client.get('manager:' + managerId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            callback(rows);
+        }
+    })
+}
+
+function getTeamStartingPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
+    client.smembers('starting_players_cl' + teamId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            for(var i in rows){
+                array[i] = "player:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
+        }
+    })
+}
+
+function getTeamBenchPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
+    client.smembers('bench_players_cl' + teamId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            for(var i in rows){
+                array[i] = "player:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
+        }
+    })
+}
+
+module.exports = {getMatch, getTeamPlayers, getPlayerInfo, getTeamInfo, getComment,getEvent,getMatchComments,getMatchEvents,getPlayerEvents, getTeamManager, getTeamStartingPlayers, getTeamBenchPlayers};

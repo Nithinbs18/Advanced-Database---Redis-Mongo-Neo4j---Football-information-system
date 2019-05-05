@@ -10,7 +10,7 @@ function menu(option){
     if(option == 1){
         console.log("MAIN MENU")
         console.log("1. Live Games")
-        
+
         var prompt_attributes = [
             {
             name: 'selection'
@@ -26,6 +26,9 @@ function menu(option){
                 var selection = result.selection;
                 var message = "  selection : " + selection;
                 console.log(message);
+                if(selection == "exit"){
+                    return;
+                }
                 menu(2);
                 return;
             }
@@ -34,14 +37,20 @@ function menu(option){
     if(option == 2){
         console.log("MATCH MENU")
         console.log("1. See match events")
-        console.log("2. See match comments")
-        console.log("3. See home team info")
-        console.log("4. See away team info")
-        console.log("5. See home team players")
-        console.log("6. See away team players")
-        console.log("7. See match stats")
-        console.log("8. Go to player menu")
-        console.log("9. Go back to main menu")
+        console.log("2. See match stats")
+        console.log("3. See home club info")
+        console.log("4. See away club info")
+        console.log("5. See home team manager")
+        console.log("6. See away team manager")
+        console.log("7. See home team starting players")
+        console.log("8. See away team starting players")
+        console.log("9. See home team players in bench")
+        console.log("10. See away team players in bench")
+        console.log("11. See home team players")
+        console.log("12. See away team players")
+        console.log("13. See match comments")
+        console.log("14. Go to player menu")
+        console.log("15. Go back to main menu")
         
         var prompt_attributes = [
             {
@@ -64,42 +73,75 @@ function menu(option){
                     })
                 }
                 if(selection == 2){
-                    operations.getMatchComments(4,function(comments){
-                        console.log(comments);
-                    })
-                }
-                if(selection == 3){
-                    operations.getTeamInfo(3,function(players){
-                        console.log(players)
-                    })
-                }
-                if(selection == 4){
-                    operations.getTeamInfo(2,function(players){
-                        console.log(players)
-                    })
-                }
-                if(selection == 5){
-                    operations.getTeamPlayers(3,function(players){
-                        console.log(players)
-                    })
-                }
-                if(selection == 6){
-                    operations.getTeamPlayers(2,function(players){
-                        console.log(players)
-                    })
-                }
-                if(selection == 7){
                     operations.getMatchStats(4,3,2,function(stats){
                         console.log(stats);
                     })
                 }
+                if(selection == 3){
+                    operations.getTeamInfo(3,function(team){
+                        console.log(team)
+                    })
+                }
+                if(selection == 4){
+                    operations.getTeamInfo(2,function(team){
+                        console.log(team)
+                    })
+                }
+                if(selection == 5){
+                    operations.getTeamManager(3,function(manager){
+                        console.log(manager)
+                    })
+                }
+                if(selection == 6){
+                    operations.getTeamManager(2,function(manager){
+                        console.log(manager)
+                    })
+                }
+                if(selection == 7){
+                    operations.getTeamStartingPlayers(3,function(players){
+                        console.log(players)
+                    })
+                }
                 if(selection == 8){
+                    operations.getTeamStartingPlayers(2,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 9){
+                    operations.getTeamBenchPlayers(3,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 10){
+                    operations.getTeamBenchPlayers(2,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 11){
+                    operations.getTeamPlayers(3,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 12){
+                    operations.getTeamPlayers(2,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 13){
+                    operations.getMatchComments(4,function(comments){
+                        console.log(comments);
+                    })
+                }
+                if(selection == 14){
                     menu(3);
                     return; 
                 }
-                if(selection == 9){
+                if(selection == 15){
                     menu(1);
                     return; 
+                }
+                if(selection == "exit"){
+                    return;
                 }
                 else{
                     menu(2);
@@ -153,6 +195,9 @@ function menu(option){
                 }
                 if(selection == 5){
                     menu(2);
+                    return;
+                }
+                if(selection == "exit"){
                     return;
                 }
                 else{

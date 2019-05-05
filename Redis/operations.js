@@ -183,7 +183,7 @@ function getPlayerMatchStats(playerId, callback){
                     if(jsonEvent.eventType=="goal"){
                         if(jsonEvent.hasOwnProperty("assist")){
                             if(jsonEvent.assist==playerStats.id){
-                                playerStats.assist++;
+                                playerStats.assists++;
                             }else{
                                 playerStats.goals++;
                             }
@@ -243,4 +243,39 @@ function getPlayerMatchStats(playerId, callback){
     });
 }
 
-module.exports = {getMatchInfo, getTeamPlayers, getTeamInfo, getMatchComments, getMatchEvents, getPlayerEvents, getMatchStats, getPlayerMatchStats}
+function getTeamManager(managerId, callback){
+    redis.getTeamManager(managerId, function(manager){
+        var jsonManager = JSON.parse(manager);
+        callback(jsonManager)
+    });
+}
+
+function getTeamStartingPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
+    redis.getTeamStartingPlayers(teamId,function(players){
+        for(var i in players){
+            array[i] = JSON.parse(players[i]);
+            if(Object.keys(players).length == j++){
+                //console.log(array);
+                callback(array);
+            }
+        }
+    });
+}
+
+function getTeamBenchPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
+    redis.getTeamBenchPlayers(teamId,function(players){
+        for(var i in players){
+            array[i] = JSON.parse(players[i]);
+            if(Object.keys(players).length == j++){
+                //console.log(array);
+                callback(array);
+            }
+        }
+    });
+}
+
+module.exports = {getMatchInfo, getTeamPlayers, getTeamInfo, getMatchComments, getMatchEvents, getPlayerEvents, getMatchStats, getPlayerMatchStats, getTeamManager, getTeamStartingPlayers, getTeamBenchPlayers}
