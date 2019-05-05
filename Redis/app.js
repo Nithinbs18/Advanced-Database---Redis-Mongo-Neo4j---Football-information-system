@@ -48,7 +48,8 @@ function menu(option){
         console.log("3. See home team players")
         console.log("4. See away team players")
         console.log("5. See match stats")
-        console.log("6. Go back to main menu")
+        console.log("6. Go to player menu")
+        console.log("7. Go back to main menu")
         
         var prompt_attributes = [
             {
@@ -79,15 +80,11 @@ function menu(option){
                     operations.getTeamPlayers(3,function(players){
                         console.log(players)
                     })
-                    menu(3);
-                    return;
                 }
                 if(selection == 4){
                     operations.getTeamPlayers(2,function(players){
                         console.log(players)
                     })
-                    menu(3);
-                    return;
                 }
                 if(selection == 5){
                     operations.getMatchStats(4,3,2,function(stats){
@@ -95,6 +92,10 @@ function menu(option){
                     })
                 }
                 if(selection == 6){
+                    menu(3);
+                    return; 
+                }
+                if(selection == 7){
                     menu(1);
                     return; 
                 }
@@ -107,9 +108,11 @@ function menu(option){
     }
     if(option == 3){
         console.log("PLAYER MENU")
-        console.log("1. See player stats in current match")
-        console.log("2. See player events in current match")
-        console.log("3. Go back to match menu")
+        console.log("1. See player stats in current match for Alexis Sanchez")
+        console.log("2. See player events in current match for Alexis Sanchez")
+        console.log("3. See player stats in current match for Marouane Fellaini")
+        console.log("4. See player events in current match for Marouane Fellaini")
+        console.log("5. Go back to match menu")
 
         var prompt_attributes = [
             {
@@ -137,6 +140,16 @@ function menu(option){
                     })
                 }
                 if(selection == 3){
+                    operations.getPlayerMatchStats(55,function(stats){
+                        console.log(stats);
+                    })
+                }
+                if(selection == 4){
+                    operations.getPlayerEvents(55,function(events){
+                        console.log(events);
+                    })
+                }
+                if(selection == 5){
                     menu(2);
                     return;
                 }

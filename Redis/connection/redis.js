@@ -23,13 +23,29 @@ function getMatch(matchId, callback){
 }
 
 function getTeamPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
     client.smembers('players_cl' + teamId, function(err,rows){
         if(err){
             console.log(err);
             return;
         }
         else{
-            callback(rows);
+            for(var i in rows){
+                array[i] = "player:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
         }
     })
 }
@@ -71,6 +87,34 @@ function getComment(commentId, callback){
 }
 
 function getMatchComments(matchId, callback){
+    var array = [];
+    var j = 1;
+    client.smembers('comments_mat' + matchId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            for(var i in rows){
+                array[i] = "comment:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
+        }
+    })
+}
+
+/*function getMatchComments(matchId, callback){
     client.smembers('comments_mat' + matchId, function(err,rows){
         if(err){
             console.log(err);
@@ -80,7 +124,7 @@ function getMatchComments(matchId, callback){
             callback(rows);
         }
     })
-}
+}*/
 
 function getEvent(eventId, callback){
     client.get('event:' + eventId, function(err,rows){
@@ -94,7 +138,7 @@ function getEvent(eventId, callback){
     })
 }
 
-function getMatchEvents(matchId, callback){
+/*function getMatchEvents(matchId, callback){
     client.smembers('events_mat' + matchId, function(err,rows){
         if(err){
             console.log(err);
@@ -104,9 +148,37 @@ function getMatchEvents(matchId, callback){
             callback(rows);
         }
     })
+}*/
+
+function getMatchEvents(matchId, callback){
+    var array = [];
+    var j = 1;
+    client.smembers('events_mat' + matchId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            for(var i in rows){
+                array[i] = "event:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
+        }
+    })
 }
 
-function getPlayerEvents(playerId, callback){
+/*function getPlayerEvents(playerId, callback){
     client.smembers('events_pl' + playerId, function(err,rows){
         if(err){
             console.log(err);
@@ -114,6 +186,33 @@ function getPlayerEvents(playerId, callback){
         }
         else{
             callback(rows);
+        }
+    })
+}*/
+function getPlayerEvents(playerId, callback){
+    var array = [];
+    var j = 1;
+    client.smembers('events_pl' + playerId, function(err,rows){
+        if(err){
+            console.log(err);
+            return;
+        }
+        else{
+            for(var i in rows){
+                array[i] = "event:" + rows[i];
+                //console.log(array[i] + "    "  + rows[i]);
+                if(Object.keys(rows).length == j++){
+                    client.mget(array,function(error,result){
+                        if(error){
+                            console.log(err);
+                            return;
+                        }
+                        else{
+                            callback(result);
+                        }
+                    })
+                }
+            }
         }
     })
 }

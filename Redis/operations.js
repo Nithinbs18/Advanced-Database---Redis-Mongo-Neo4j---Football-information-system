@@ -8,13 +8,15 @@ function getMatchInfo(matchId, callback){
 }
 
 function getTeamPlayers(teamId, callback){
+    var array = [];
+    var j = 1;
     redis.getTeamPlayers(teamId,function(players){
-        //console.log(players);
         for(var i in players){
-            redis.getPlayerInfo(players[i], function(playerInfo){
-                var jsonPlayerInfo = JSON.parse(playerInfo);
-                callback(jsonPlayerInfo);
-            })
+            array[i] = JSON.parse(players[i]);
+            if(Object.keys(players).length == j++){
+                //console.log(array);
+                callback(array);
+            }
         }
     });
 }
@@ -26,7 +28,7 @@ function getTeamInfo(teamId, callback){
     });
 }
 
-function getMatchComments(matchId, callback){
+/*function getMatchComments(matchId, callback){
     redis.getMatchComments(matchId,function(matchComments){
         var array = []
         var j = 1;
@@ -48,9 +50,23 @@ function getMatchComments(matchId, callback){
             }
         }  
     });
+}*/
+
+function getMatchComments(matchId, callback){
+    var array = [];
+    var j = 1;
+    redis.getMatchComments(matchId,function(comments){
+        for(var i in comments){
+            array[i] = JSON.parse(comments[i]);
+            if(Object.keys(comments).length == j++){
+                //console.log(array);
+                callback(array);
+            }
+        }
+    });
 }
 
-function getMatchEvents(matchId, callback){
+/*function getMatchEvents(matchId, callback){
     redis.getMatchEvents(matchId,function(matchEvents){
         array = []
         var j = 1;
@@ -71,6 +87,20 @@ function getMatchEvents(matchId, callback){
             }
         }
     });
+}*/
+
+function getMatchEvents(matchId, callback){
+    var array = [];
+    var j = 1;
+    redis.getMatchEvents(matchId,function(events){
+        for(var i in events){
+            array[i] = JSON.parse(events[i]);
+            if(Object.keys(events).length == j++){
+                //console.log(array);
+                callback(array);
+            }
+        }
+    });
 }
 
 function getPlayerEvents(playerId, callback){
@@ -82,15 +112,13 @@ function getPlayerEvents(playerId, callback){
         }
         else{
             for(var i in playerEvents){
-                redis.getEvent(playerEvents[i], function(event){
-                    var jsonEvent = JSON.parse(event);
+                    var jsonEvent = JSON.parse(playerEvents[i]);
                     array.push(jsonEvent);
                     //console.log(jsonEvent);
                     if(Object.keys(playerEvents).length == j++){
                         //console.log(array);
                         callback(array);
                     }
-                })
             }
         }
         
@@ -108,8 +136,7 @@ function getMatchStats(matchId, t1, t2, callback){
         }
         else{
             for(var i in matchEvents){
-                redis.getEvent(matchEvents[i], function(event){
-                    var jsonEvent = JSON.parse(event);
+                    var jsonEvent = JSON.parse(matchEvents[i]);
                     if(jsonEvent.eventType=="goal"){
                         if(jsonEvent.team == team1.id){
                             team1.goals++;
@@ -184,7 +211,6 @@ function getMatchStats(matchId, t1, t2, callback){
                         array.push(team2);
                         callback(array);
                     }
-                })
             }
         }
     });   
@@ -200,8 +226,7 @@ function getPlayerMatchStats(playerId, callback){
         else{
             playerStats.minutes_played = 90;
             for(var i in playerEvents){
-                redis.getEvent(playerEvents[i], function(event){
-                    var jsonEvent = JSON.parse(event);
+                    var jsonEvent = JSON.parse(playerEvents[i]);
                     if(jsonEvent.eventType=="goal"){
                         if(jsonEvent.hasOwnProperty("assist")){
                             if(jsonEvent.assist==playerStats.id){
@@ -259,7 +284,7 @@ function getPlayerMatchStats(playerId, callback){
                     if(Object.keys(playerEvents).length == j++){
                         callback(playerStats);
                     }
-                })
+                
             }
         }
     });
