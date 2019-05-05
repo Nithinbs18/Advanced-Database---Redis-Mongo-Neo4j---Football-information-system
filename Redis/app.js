@@ -1,8 +1,11 @@
 const operations = require('./operations');
 var prompt = require('prompt');
 
+var gameName;
+
 operations.getMatchInfo(4, function(matchInfo){
     console.log(matchInfo);
+    gameName = matchInfo.name;
 })
 menu(1);
 
@@ -36,6 +39,7 @@ function menu(option){
     }
     if(option == 2){
         console.log("MATCH MENU")
+        console.log(gameName)
         console.log("1. See match events")
         console.log("2. See match stats")
         console.log("3. See home club info")
@@ -152,6 +156,7 @@ function menu(option){
     }
     if(option == 3){
         console.log("PLAYER MENU")
+        console.log(gameName)
         console.log("1. See player stats in current match for Alexis Sanchez")
         console.log("2. See player events in current match for Alexis Sanchez")
         console.log("3. See player stats in current match for Marouane Fellaini")
