@@ -1,6 +1,5 @@
 const operations = require('./operations');
 var prompt = require('prompt');
-var promise = require('promise');
 
 operations.getMatchInfo(4, function(matchInfo){
     console.log(matchInfo);

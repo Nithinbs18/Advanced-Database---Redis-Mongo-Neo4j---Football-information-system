@@ -28,30 +28,6 @@ function getTeamInfo(teamId, callback){
     });
 }
 
-/*function getMatchComments(matchId, callback){
-    redis.getMatchComments(matchId,function(matchComments){
-        var array = []
-        var j = 1;
-        if(Object.keys(matchComments).length==0){
-            callback(array);
-        }
-        else{
-            for(var i in matchComments){
-                redis.getComment(matchComments[i], function(comment){
-                    var jsonComment = JSON.parse(comment);
-                    array.push(jsonComment);
-                    //console.log(j);
-                    //console.log(Object.keys(matchComments).length);
-                    if(Object.keys(matchComments).length == j++){
-                        //console.log(array);
-                        callback(array);
-                    }
-                })
-            }
-        }  
-    });
-}*/
-
 function getMatchComments(matchId, callback){
     var array = [];
     var j = 1;
@@ -65,29 +41,6 @@ function getMatchComments(matchId, callback){
         }
     });
 }
-
-/*function getMatchEvents(matchId, callback){
-    redis.getMatchEvents(matchId,function(matchEvents){
-        array = []
-        var j = 1;
-        if(Object.keys(matchEvents).length==0){
-            callback(array);
-        }
-        else{
-            for(var i in matchEvents){
-                redis.getEvent(matchEvents[i], function(event){
-                    var jsonEvent = JSON.parse(event);
-                    array.push(jsonEvent);
-                    //console.log(jsonEvent);
-                    if(Object.keys(matchEvents).length == j++){
-                        //console.log(array);
-                        callback(array);
-                    }
-                })
-            }
-        }
-    });
-}*/
 
 function getMatchEvents(matchId, callback){
     var array = [];
