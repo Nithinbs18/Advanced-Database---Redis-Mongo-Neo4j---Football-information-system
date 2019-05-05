@@ -44,11 +44,13 @@ function menu(option){
         console.log("MATCH MENU")
         console.log("1. See match events")
         console.log("2. See match comments")
-        console.log("3. See home team players")
-        console.log("4. See away team players")
-        console.log("5. See match stats")
-        console.log("6. Go to player menu")
-        console.log("7. Go back to main menu")
+        console.log("3. See home team info")
+        console.log("4. See away team info")
+        console.log("5. See home team players")
+        console.log("6. See away team players")
+        console.log("7. See match stats")
+        console.log("8. Go to player menu")
+        console.log("9. Go back to main menu")
         
         var prompt_attributes = [
             {
@@ -76,25 +78,35 @@ function menu(option){
                     })
                 }
                 if(selection == 3){
-                    operations.getTeamPlayers(3,function(players){
+                    operations.getTeamInfo(3,function(players){
                         console.log(players)
                     })
                 }
                 if(selection == 4){
-                    operations.getTeamPlayers(2,function(players){
+                    operations.getTeamInfo(2,function(players){
                         console.log(players)
                     })
                 }
                 if(selection == 5){
+                    operations.getTeamPlayers(3,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 6){
+                    operations.getTeamPlayers(2,function(players){
+                        console.log(players)
+                    })
+                }
+                if(selection == 7){
                     operations.getMatchStats(4,3,2,function(stats){
                         console.log(stats);
                     })
                 }
-                if(selection == 6){
+                if(selection == 8){
                     menu(3);
                     return; 
                 }
-                if(selection == 7){
+                if(selection == 9){
                     menu(1);
                     return; 
                 }
