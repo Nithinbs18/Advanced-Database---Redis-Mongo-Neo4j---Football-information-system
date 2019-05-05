@@ -2,6 +2,8 @@ const inquirer  = require('./inquirer');
 const neo4j = require('neo4j-driver').v1;
 const driver = neo4j.driver("bolt://localhost:11001", neo4j.auth.basic("neo4j", "12345"));
 const session = driver.session();
+var MongoClient = require('mongodb').MongoClient;
+var url = 'mongodb://localhost/AIS';
 
 module.exports = {
 
@@ -15,15 +17,30 @@ module.exports = {
 },
 
 run2 : async () => {
+
   const choice = await inquirer.matchDetails();
       session
-      .run("MATCH p=(h:Club)-[r:home]->(m:Match)<-[q:away]->(a:Club) where m.name=$name RETURN h,a",{name: choice.mname})
+      .run("MATCH p=(h:Club)-[r:home]->(m:Match)<-[q:away]->(a:Club) where m.name=$name RETURN h,a,m",{name: choice.mname})
       .then(function(resp){
         resp.records.forEach(function(val){
           console.log("Home:"+val._fields[0].properties.name)
           console.log("Away:"+val._fields[1].properties.name)
+
+          MongoClient.connect(url, function(err, db) {
+
+            var cursor = db.collection('match').find({match_id:val._fields[2].properties.id});
+        
+            cursor.each(function(err, doc) {
+        
+                console.log(doc);
+                db.close(); 
+            });
+        });
+
           ;});})
       .catch(function(err){console.log(err);});
+
+
 },
 
 run3 : async () => {
@@ -33,6 +50,18 @@ run3 : async () => {
       .then(function(resp){
         resp.records.forEach(function(val){ 
           console.log(val._fields[0].properties.name+" plays for "+val._fields[1].properties.name);
+          // console.log(val._fields[0].properties.player_id)
+          MongoClient.connect(url, function(err, db) {
+
+            var cursor = db.collection('players').find({player_id:val._fields[0].properties.player_id},{ _id: 0, name:1 , club: 1 , age: 1, playing_position: 1 });
+        
+            cursor.each(function(err, doc) {
+        
+                console.log(doc);
+                db.close(); 
+            });
+        });
+
           ;});})
       .catch(function(err){console.log(err);});
 },
@@ -45,6 +74,18 @@ run4 : async () => {
       .then(function(resp){
         resp.records.forEach(function(val){ 
           console.log(val._fields[0].properties.name+" manages "+val._fields[1].properties.name);
+
+          MongoClient.connect(url, function(err, db) {
+
+            var cursor = db.collection('managers').find({id:val._fields[0].properties.id});
+        
+            cursor.each(function(err, doc) {
+        
+                console.log(doc);
+                db.close(); 
+            });
+        });
+
           ;});})
       .catch(function(err){console.log(err);});
 },

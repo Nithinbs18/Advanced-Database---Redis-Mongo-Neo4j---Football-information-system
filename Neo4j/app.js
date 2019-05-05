@@ -41,14 +41,21 @@ var recursiveAsyncReadLine = function () {
       if (answer == '0'){
          process.exit()
       }
-      else 
-         recursiveAsyncReadLine(); 
+      // else 
+      //    recursiveAsyncReadLine(); 
   });
 };
 
 recursiveAsyncReadLine(); 
 
-
+// players of club
+// MATCH p=(a)-[r:PLAYS_FOR]->(c) where c.name="Chelsea" RETURN p
+// match details
+// MATCH p=(h:Club)-[r:home]->(m:Match)<-[q:away]->(a:Club) where m.name="Chelsea_vs_Liverpool" RETURN h,a
+// country of a player
+// MATCH (p)-[r:PLAYS_FOR]->(t:Country) where p.name="" RETURN p,t
+// manager details of a team
+// MATCH (m)-[r:MANAGES]->(t) where t.name="Chelsea" RETURN m,t
 
 // As an end user, I want to know the number of matches my favourite teamis playing as home or away team in a league of my choice.
 
@@ -67,3 +74,10 @@ recursiveAsyncReadLine();
 // As an end user, I want to know the total number of meet-ups formy favourite team.
 
 // MATCH (u:User)-[r:FOLLOWS]->(c:Club)<--(m:meetup) where u.name="akshay" RETURN Count(m)
+
+// matches in will a specific player is appeared
+
+// MATCH (p)-[:STARTING|:SUB]->(m) where p.name="Willy_Caballero" RETURN p,m
+
+// organizer details
+// MATCH p=(u:User)-[r:organize]->(m) where m.name="UMU_LP" RETURN u
