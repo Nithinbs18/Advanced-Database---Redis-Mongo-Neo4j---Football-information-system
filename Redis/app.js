@@ -10,30 +10,21 @@ function menu(option){
     if(option == 1){
         console.log("MAIN MENU")
         console.log("1. Live Games")
-        // This json object is used to configure what data will be retrieved from command line.
+        
         var prompt_attributes = [
             {
-        // The fist input text is assigned to username variable.
             name: 'selection'
             }
         ];
-
-        // Start the prompt to read user input.
         prompt.start();
-
-        // Prompt and get user input then display those data in console.
         prompt.get(prompt_attributes, function (err, result) {
             if (err) {
                 console.log(err);
                 return 1;
             }else {
                 console.log('Command-line received data:');
-
-                // Get user input from result object.
                 var selection = result.selection;
                 var message = "  selection : " + selection;
-
-                // Display user input in console log.
                 console.log(message);
                 menu(2);
                 return;
