@@ -161,6 +161,7 @@ function menu(option){
         console.log("2. See player events in current match for Alexis Sanchez")
         console.log("3. See player stats in current match for Marouane Fellaini")
         console.log("4. See player events in current match for Marouane Fellaini")
+        //console.log("5. Get stats for all players in match")
         console.log("5. Go back to match menu")
 
         var prompt_attributes = [
@@ -198,6 +199,11 @@ function menu(option){
                         console.log(events);
                     })
                 }
+                /*if(selection == 5){
+                    operations.getStatsForAllPlayers(4, function(stats){
+                        console.log(stats);
+                    })
+                }*/
                 if(selection == 5){
                     menu(2);
                     return;

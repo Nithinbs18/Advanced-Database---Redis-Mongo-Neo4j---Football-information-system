@@ -57,9 +57,11 @@ function getMatchEvents(matchId, callback){
 }
 
 function getPlayerEvents(playerId, callback){
+    //console.log("Getting Player Events");
     redis.getPlayerEvents(playerId,function(playerEvents){
         array = [];
         var j = 1;
+        //console.log("player events are: " + playerEvents);
         if(Object.keys(playerEvents).length==0){
             callback(array);
         }
@@ -67,14 +69,13 @@ function getPlayerEvents(playerId, callback){
             for(var i in playerEvents){
                     var jsonEvent = JSON.parse(playerEvents[i]);
                     array.push(jsonEvent);
-                    //console.log(jsonEvent);
+                    //console.log("JsonEvent = " + jsonEvent);
                     if(Object.keys(playerEvents).length == j++){
                         //console.log(array);
                         callback(array);
                     }
             }
         }
-        
     });
 }
 
@@ -173,6 +174,7 @@ function getPlayerMatchStats(playerId, callback){
     playerStats = {"id":"PL"+playerId, "minutes_played":0, "goals":0, "assists":0, "fouls":0, "penalties_conceded":0, "penalties_taken":0, "cards_yellow":0, "cards_red":0, "total_shots":0, "shots_on_target":0, "total_passes":0, "passes_completed":0};
     redis.getPlayerEvents(playerId,function(playerEvents){
         var j = 1;
+        console.log("playerEvents lenght = " + Object.keys(playerEvents).length)
         if(Object.keys(playerEvents).length==0){
             callback(playerStats);
         }
@@ -241,6 +243,7 @@ function getPlayerMatchStats(playerId, callback){
             }
         }
     });
+    callback(playerStats);
 }
 
 function getTeamManager(managerId, callback){
@@ -278,4 +281,24 @@ function getTeamBenchPlayers(teamId, callback){
     });
 }
 
-module.exports = {getMatchInfo, getTeamPlayers, getTeamInfo, getMatchComments, getMatchEvents, getPlayerEvents, getMatchStats, getPlayerMatchStats, getTeamManager, getTeamStartingPlayers, getTeamBenchPlayers}
+function getStatsForAllPlayers(matchId, callback){
+    var array = [];
+    var j = 1;
+    var i = 0;
+    players = [74, 58, 55, 70, 73, 64, 8, 20, 22, 16, 18];
+    numberOfPlayers = players.length;
+    console.log("number of players = " + numberOfPlayers);
+    while(i < 11){
+        getPlayerMatchStats(players[i], function(stats){
+            console.log("i = " + i + " ----- player = " + players[i]);
+            console.log(stats);
+            array.push = stats;
+            i++;
+            if(numberOfPlayers = j++){
+                callback(array);
+            }
+        })
+    }
+}
+
+module.exports = {getMatchInfo, getTeamPlayers, getTeamInfo, getMatchComments, getMatchEvents, getPlayerEvents, getMatchStats, getPlayerMatchStats, getTeamManager, getTeamStartingPlayers, getTeamBenchPlayers, getStatsForAllPlayers}

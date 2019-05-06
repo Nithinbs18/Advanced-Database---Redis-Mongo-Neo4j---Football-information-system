@@ -114,18 +114,6 @@ function getMatchComments(matchId, callback){
     })
 }
 
-/*function getMatchComments(matchId, callback){
-    client.smembers('comments_mat' + matchId, function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        else{
-            callback(rows);
-        }
-    })
-}*/
-
 function getEvent(eventId, callback){
     client.get('event:' + eventId, function(err,rows){
         if(err){
@@ -137,18 +125,6 @@ function getEvent(eventId, callback){
         }
     })
 }
-
-/*function getMatchEvents(matchId, callback){
-    client.smembers('events_mat' + matchId, function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        else{
-            callback(rows);
-        }
-    })
-}*/
 
 function getMatchEvents(matchId, callback){
     var array = [];
@@ -178,17 +154,6 @@ function getMatchEvents(matchId, callback){
     })
 }
 
-/*function getPlayerEvents(playerId, callback){
-    client.smembers('events_pl' + playerId, function(err,rows){
-        if(err){
-            console.log(err);
-            return;
-        }
-        else{
-            callback(rows);
-        }
-    })
-}*/
 function getPlayerEvents(playerId, callback){
     var array = [];
     var j = 1;
@@ -198,6 +163,7 @@ function getPlayerEvents(playerId, callback){
             return;
         }
         else{
+            //console.log("Player event keys = " + rows);
             for(var i in rows){
                 array[i] = "event:" + rows[i];
                 //console.log(array[i] + "    "  + rows[i]);
