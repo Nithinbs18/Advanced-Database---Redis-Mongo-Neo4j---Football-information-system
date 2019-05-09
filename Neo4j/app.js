@@ -51,13 +51,13 @@ recursiveAsyncReadLine();
 // players of club
 // MATCH p=(a)-[r:PLAYS_FOR]->(c) where c.name="Chelsea" RETURN p
 // match details
-// MATCH p=(h:Club)-[r:home]->(m:Match)<-[q:away]->(a:Club) where m.name="Chelsea_vs_Liverpool" RETURN h,a
+// MATCH (h:Club)-[r:home]->(m:Match)<-[q:away]->(a:Club) where m.name="Chelsea_vs_Liverpool" RETURN h,a
 // country of a player
 // MATCH (p)-[r:PLAYS_FOR]->(t:Country) where p.name="" RETURN p,t
 // manager details of a team
 // MATCH (m)-[r:MANAGES]->(t) where t.name="Chelsea" RETURN m,t
 
-// As an end user, I want to know the number of matches my favourite teamis playing as home or away team in a league of my choice.
+// As an end user, I want to know the number of matches my favourite team is playing as home or away team in a league of my choice.
 
 // all match:
 // MATCH (u:User)-[r:FOLLOWS]->(c:Club)-->(m:Match) where u.name="akshay" RETURN m
@@ -78,6 +78,6 @@ recursiveAsyncReadLine();
 // matches in will a specific player is appeared
 
 // MATCH (p)-[:STARTING|:SUB]->(m) where p.name="Willy_Caballero" RETURN p,m
-
+// MATCH (p)-[:STARTING|:SUB]->(m)-->(l:League) where p.name="Willy_Caballero"and l.id="l1" return m.id
 // organizer details
 // MATCH p=(u:User)-[r:organize]->(m) where m.name="UMU_LP" RETURN u

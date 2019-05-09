@@ -11,7 +11,7 @@ module.exports = {
         name: 'cname',
         type: 'list',
         message: 'Enter the club name to retrive the Players:',
-        choices: ['Chelsea',' Manchester_United','Liverpool']
+        choices: ['Chelsea','Manchester_United','Liverpool']
       }
     ];
     return inquirer.prompt(questions);
