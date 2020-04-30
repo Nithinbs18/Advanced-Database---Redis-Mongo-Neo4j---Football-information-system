@@ -19,7 +19,7 @@
   "homepage": "https://github.com/Nithinbs18/Advanced-Database---Redis-Mongo-Neo4j---Football-information-system.git#readme",
   "dependencies": {
     "inquirer": "^6.3.1",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "promise": "^8.0.3",
     "prompt": "^1.0.0",
     "q": "^1.5.1",
